@@ -17,6 +17,7 @@
                 <span id="playername">Marius</span>
             </div>
             <div id="points"><img src="img/points.png" /> <span id="points-count">0</span></div>
+            <div id="level">Level: <span id="level-count">0</span></div>
         </section>
         <aside id="hud-inventory">
             <h3>Armory</h3>
@@ -40,5 +41,39 @@
             </table>
         </aside>
     </div>
+    <script>
+    
+       const playerName = "Aman"
+        document.getElementById("playername").innerHTML = playerName
+        
+        let coins = 1; 
+        let coinsPrint;
+
+        if (coins === 0) {
+            coinsPrint = coins
+        } else {
+            coinsPrint = "Collect some coins"
+        }
+        document.getElementById("points-count").innerHTML = coinsPrint
+
+        
+        let lives = 5
+        document.getElementById("lives-count").innerHTML = lives
+        
+        let longsword = 1
+        let warhammer = 4
+        let battleaxe = 2
+        let armour = 3
+        document.getElementById("weapon-longsword").innerHTML = longsword
+        document.getElementById("weapon-warhammer").innerHTML = warhammer
+        document.getElementById("weapon-battleaxe").innerHTML = battleaxe
+        document.getElementById("weapon-armour").innerHTML = armour
+        
+        let points = (coins * 5) + (longsword * 5) + (warhammer * 15) + (battleaxe * 20) + (armour * 25)
+        document.getElementById("points-count").innerHTML = points
+        
+        let level = 1
+        document.getElementById("level-count").innerHTML = level
+    </script>
 </body>
 </html>
