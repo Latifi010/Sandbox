@@ -214,7 +214,9 @@
                     //Når brikken er plassert på spillerbrettet, må vi sjekke om den - og brikkene rundt - 
                     //utgjør en vinnerkombinasjon. Denne funksjonaliteten ligger i funksjonen sjekkVinner(),
                     //siden dette er et litt større sett med handlinger og kan gi noen ulike utfall.
-                    sjekkVinner();
+
+                    //setTimeout() brukes for å vente litt før vi sjekker om det er en vinner.
+                    setTimeout(function(){ sjekkVinner(); }, 1000);
 
                 //Men, hvis cellen ikke er ledig...
                 } else {
@@ -245,6 +247,8 @@
 
         function sjekkVinner() {
             var rundenVunnet = false;
+            var vinnerKombinasjon // Lager en tom array for å lagre vinnerkombinasjonen
+
             //Vi må sjekke etter vinner for hver brikke som plasseres på brettet.
             // Dette gjør vi ved å gå gjennom alle vinnerkombinasjonene, og
             //sjekke om brikkene på spillbrettet er like ved indexene til vinnerkombinasjonene:
@@ -266,6 +270,7 @@
                 //Hvis brikke1 er det samme som brikke 2, og brikke 2 er det samme som
                 //brikke3, er alle like, og vi har en vinnerkombinasjon. Da 
                 if(brikke1 === brikke2 && brikke2 === brikke3) {
+                    vinnerKombinasjon = winningCombos[combination];
                     rundenVunnet = true;
                     break;
                 }
@@ -284,14 +289,22 @@
                 */
 
                 document.getElementById("playerturn").style.backgroundColor = "#FFD700";
+                
 
                 //Gjør restart spill-knappen synlig
                 document.getElementById("newgame").style.display = "block";
                 //Sett spillstatus til false, slik at ingen spillere får plassere
                 //flere brikker på brettet - dette løses med sjekken i funksjonen spill()
                 spillStatus = false;
-            }
+
+                vinnerKombinasjon.forEach(function(celle) {
+                document.getElementById("celle" + celle).style.color = "#FFD700";
+            });
         }
+    }
+                
+            
+        
 
         //Når et spill er avsluttet, og et nytt skal begynne, må vi gjøre klar en del ting:
         // 1) Fjerne brikkene som er plassert på brettet - både i grensesnittet og i programmet vårt
@@ -305,6 +318,7 @@
             var celleteller = 0;
             while (celleteller < 9) {
                 document.getElementById("celle" + celleteller).innerHTML = "";
+                document.getElementById("celle" + celleteller).style.color = "";
                 celleteller++;
             }
             // 2)
