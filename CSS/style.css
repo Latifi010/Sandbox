@@ -1,0 +1,71 @@
+/* DEL 1 FLEXBOX OG GRID LMS
+body{
+    font-family: sans-serif;
+}
+
+.flex-container{
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+main{
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: aqua;
+    padding: 2rem;
+}
+
+article{
+    background-color: azure;
+    padding: 2rem;
+    flex: 1;
+
+}
+*/
+*{
+    box-sizing: border-box;
+}
+#grid-container{
+    display: grid;
+    grid-template-areas: "header header header" 
+                        "nav nav nav"
+                        "main main aside"   
+                        "footer footer footer";
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr; /* fr bestemmer hvor høy og brede radene og kolonnene skal være*/
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    font-family: sans-serif;
+}
+
+#page-header{
+    grid-area: header;
+    background-color: aqua;
+    padding: 2rem;
+}
+
+nav{
+    grid-area: nav;
+    background-color: darkblue;
+    padding: 2rem;
+}
+#main-header{
+    grid-area: main;
+    background-color: bisque;
+    padding: 2rem;
+}
+
+aside{
+    grid-area: aside;
+    background-color: blueviolet;
+    padding: 2rem;
+}
+
+footer{
+    grid-area: footer;
+    background-color:chocolate;
+    padding: 2rem;
+}
